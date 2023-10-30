@@ -2,37 +2,17 @@
 import InputText from 'primevue/inputtext'
 import { ref } from 'vue'
 
-const id = ref<number>()
 const title = ref<string>('')
 const task = ref<string>('')
 const address = ref<string>('')
 
 type schedules = { id: number; title: string; task: string; address: string }
 
-// type schedules = { title: string; task: string; address: string }
-
-// interface Props {
-//   datas: Array<schedules>
-// }
-
 interface Emits {
   (event: 'resistNewTask', newSchedule: schedules): void
 }
 
-// const props = defineProps<Props>()
 const emit = defineEmits<Emits>()
-
-// const saveOnClick = () => {
-//   if (confirm('登録しますか？')) {
-//     let newSchedule = [id, title.value, task.value, address.value]
-//     emits('resistNewTask', newSchedule)
-//     console.log(newSchedule)
-//     title.value = ''
-//     task.value = ''
-//     address.value = ''
-//     return newSchedule
-//   }
-// }
 
 const saveOnClick = () => {
   if (confirm('登録しますか？')) {
@@ -47,7 +27,6 @@ const saveOnClick = () => {
     title.value = ''
     task.value = ''
     address.value = ''
-    // return newSchedule
   }
 }
 </script>

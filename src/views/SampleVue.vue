@@ -29,14 +29,6 @@ import SampleCollection from '@/components/Sample/SampleCollection.vue'
 import SampleForm from '@/components/Sample/SampleForm.vue'
 import InputText from 'primevue/inputtext'
 
-// const id = ref<number>()
-// const title = ref<string>('')
-// const task = ref<string>('')
-// const address = ref<string>('')
-// let date = new Date()
-// let startTime = date.toLocaleTimeString()
-// let endTime = date.toLocaleTimeString()
-
 const test = ref<string>('')
 const samples = ref<{ id: number; test: string }[]>([
   { id: 0, test: 'hoge' },
