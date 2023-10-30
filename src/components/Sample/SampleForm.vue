@@ -20,7 +20,7 @@ interface Emits {
 }
 
 // const props = defineProps<Props>()
-const emits = defineEmits<Emits>()
+const emit = defineEmits<Emits>()
 
 // const saveOnClick = () => {
 //   if (confirm('登録しますか？')) {
@@ -36,13 +36,18 @@ const emits = defineEmits<Emits>()
 
 const saveOnClick = () => {
   if (confirm('登録しますか？')) {
-    const newSchedule: schedules[] = [title.value, task.value, address.value]
-    emits('resistNewTask', newSchedule)
+    const newSchedule: schedules = {
+      id: 0,
+      title: title.value,
+      task: task.value,
+      address: address.value
+    }
+    emit('resistNewTask', newSchedule)
     console.log(newSchedule)
     title.value = ''
     task.value = ''
     address.value = ''
-    return newSchedule
+    // return newSchedule
   }
 }
 </script>
@@ -50,7 +55,7 @@ const saveOnClick = () => {
 <template>
   <form>
     <span class="p-float-label">
-      <InputText type="text" v-model="title" id="title" name="title" v-focus.alert />
+      <InputText type="text" v-model="title" id="title" name="title" />
       <label for="title">title</label>
     </span>
     <span class="p-float-label">

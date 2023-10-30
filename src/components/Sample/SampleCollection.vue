@@ -1,14 +1,17 @@
 <template>
-  <div v-if="datas !== null">
-    <DataTable :value="datas" tableStyle="min-width: 50rem">
-      <Column field="id" header="id"> </Column>
-      <Column field="title" header="title"> </Column>
-      <Column field="task" header="task"> </Column>
-      <Column field="address" header="address"> </Column>
-    </DataTable>
-  </div>
-  <div v-else>
-    <h3>no schedules</h3>
+  <div>
+    <h4>CollectionDataTable</h4>
+    <div v-if="datas !== null">
+      <DataTable :value="datas" tableStyle="min-width: 50rem">
+        <Column field="id" header="id"> </Column>
+        <Column field="title" header="title"> </Column>
+        <Column field="task" header="task"> </Column>
+        <Column field="address" header="address"> </Column>
+      </DataTable>
+    </div>
+    <div v-else>
+      <h3>no schedules</h3>
+    </div>
   </div>
 </template>
 
@@ -28,4 +31,10 @@ onMounted(() => {
     return props.datas
   })
 })
+watch(
+  () => props.datas,
+  () => {
+    console.log(props.datas)
+  }
+)
 </script>
