@@ -51,12 +51,12 @@ const deleteSample = (id: number) => {
 }
 
 type schedules = { id: number; title: string; task: string; address: string }
-const datas_init: schedules[] = [
+const datas = ref<schedules[]>([
   { id: 1, title: 'title1', task: 'task1', address: 'TOKYO' },
   { id: 2, title: 'title2', task: 'task2', address: 'TOKYO' }
-]
+])
 
-const datas = ref<schedules[]>([{} as schedules])
+// const datas = ref<schedules[]>([{} as schedules])
 
 const resistNewTask = (newSchedule: schedules) => {
   console.log(newSchedule)
@@ -67,9 +67,7 @@ const resistNewTask = (newSchedule: schedules) => {
 }
 
 onMounted(() => {
-  datas.value = datas_init
   console.log(datas)
-  // _init()
 })
 
 watch(datas, () => {

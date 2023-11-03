@@ -2,6 +2,9 @@
   <div>
     <h4>CollectionDataTable</h4>
     <div v-if="datas !== null">
+      <!-- Debug: 直接データを表示 -->
+      <pre>{{ datas }}</pre>
+      <!-- ここまで -->
       <DataTable :value="datas" tableStyle="min-width: 50rem">
         <Column field="id" header="id"> </Column>
         <Column field="title" header="title"> </Column>
