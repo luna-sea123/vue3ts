@@ -1,10 +1,7 @@
 <template>
-  <div>
+  <div class="container">
     <h4>CollectionDataTable</h4>
     <div v-if="datas !== null">
-      <!-- Debug: 直接データを表示 -->
-      <pre>{{ datas }}</pre>
-      <!-- ここまで -->
       <DataTable :value="datas" tableStyle="min-width: 50rem">
         <Column field="id" header="id"> </Column>
         <Column field="title" header="title"> </Column>
@@ -41,3 +38,10 @@ watch(
   }
 )
 </script>
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>

@@ -133,7 +133,7 @@ const items = ref([
       <Sidebar v-model:visible="visible">
         <h2>Sidebar</h2>
         <RouterLink to="/">Home</RouterLink><br />
-        <RouterLink to="/sample">Sample</RouterLink>
+        <RouterLink to="/sample">Sample</RouterLink><br />
         <RouterLink to="/top">Top</RouterLink><br />
         <MegaMenu :model="items" orientation="vertical" />
       </Sidebar>

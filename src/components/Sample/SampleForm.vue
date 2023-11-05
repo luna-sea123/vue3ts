@@ -9,12 +9,12 @@ const address = ref<string>('')
 type schedules = { id: number; title: string; task: string; address: string }
 
 interface Emits {
-  (event: 'resistNewTask', newSchedule: schedules): void
+  (event: 'resistNewTask:datas', newSchedule: schedules): void
 }
 
 const emit = defineEmits<Emits>()
 
-const saveOnClick = () => {
+const saveOnClick = (): void => {
   if (confirm('登録しますか？')) {
     const newSchedule: schedules = {
       id: 0,
@@ -22,7 +22,7 @@ const saveOnClick = () => {
       task: task.value,
       address: address.value
     }
-    emit('resistNewTask', newSchedule)
+    emit('resistNewTask:datas', newSchedule)
     console.log(newSchedule)
     title.value = ''
     task.value = ''
@@ -32,26 +32,34 @@ const saveOnClick = () => {
 </script>
 
 <template>
-  <form>
-    <span class="p-float-label">
-      <InputText type="text" v-model="title" id="title" name="title" />
-      <label for="title">title</label>
-    </span>
-    <span class="p-float-label">
-      <textarea v-model="task" id="task" name="task" rows="5" cols="30" />
-      <label for="task">task</label>
-    </span>
-    <span class="p-float-label">
-      <textarea v-model="address" id="address" name="address" rows="5" cols="30" />
-      <label for="address">address</label>
-    </span>
-    <div>
-      <Button @click="saveOnClick" label="save" icon="pi pi-check" iconPos="right" />
-    </div>
-  </form>
+  <div class="cantainer">
+    <form>
+      <span class="p-float-label">
+        <InputText type="text" v-model="title" id="title" name="title" />
+        <label for="title">title</label>
+      </span>
+      <span class="p-float-label">
+        <textarea v-model="task" id="task" name="task" rows="5" cols="30" />
+        <label for="task">task</label>
+      </span>
+      <span class="p-float-label">
+        <textarea v-model="address" id="address" name="address" rows="5" cols="30" />
+        <label for="address">address</label>
+      </span>
+      <div>
+        <Button @click="saveOnClick" label="save" icon="pi pi-check" iconPos="right" />
+      </div>
+    </form>
+  </div>
 </template>
 
 <style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 form {
   margin: 2rem auto;
   max-width: 40rem;
