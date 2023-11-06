@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import InputText from 'primevue/inputtext'
-import { ref } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 
 const title = ref<string>('')
 const task = ref<string>('')
 const address = ref<string>('')
+//disabled判定用
+const disabled = ref<boolean>()
 
 type schedules = { id: number; title: string; task: string; address: string }
 
@@ -29,6 +31,23 @@ const saveOnClick = (): void => {
     address.value = ''
   }
 }
+
+const judgeDisabled = () => {
+  if (title.value === '' || task.value === '' || address.value === '') {
+    disabled.value = true
+  } else {
+    disabled.value = false
+  }
+}
+
+onMounted(() => {
+  judgeDisabled()
+})
+
+//watch複数指定書式
+watch([title, task, address], () => {
+  judgeDisabled()
+})
 </script>
 
 <template>
@@ -47,7 +66,13 @@ const saveOnClick = (): void => {
         <label for="address">address</label>
       </span>
       <div>
-        <Button @click="saveOnClick" label="save" icon="pi pi-check" iconPos="right" />
+        <Button
+          :disabled="disabled"
+          @click="saveOnClick"
+          label="save"
+          icon="pi pi-check"
+          iconPos="right"
+        />
       </div>
     </form>
   </div>
