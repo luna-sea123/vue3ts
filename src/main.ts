@@ -7,6 +7,13 @@ import '/node_modules/primeflex/primeflex.css'
 import ConfirmationService from 'primevue/confirmationservice'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+// dayjsのインポート
+import dayjs from 'dayjs'
+// ロケールのインポート
+import 'dayjs/locale/ja'
+import isBetween from 'dayjs/plugin/isBetween'
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 
 import App from './App.vue'
 import router from './router'
@@ -24,6 +31,12 @@ import ColumnGroup from 'primevue/columngroup' // optional
 import Row from 'primevue/row' // optional
 
 const app = createApp(App)
+// ロケール設定
+dayjs.locale('ja')
+// ↓使用するプラグインを追加
+dayjs.extend(isBetween)
+dayjs.extend(isSameOrAfter)
+dayjs.extend(isSameOrBefore)
 
 app.use(createPinia())
 app.use(router)
@@ -40,5 +53,6 @@ app
   .component('Row', Row)
   .component('InputText', InputText)
   .component('ConfirmDialog', ConfirmDialog)
+  .provide('dayjs', dayjs)
 
 app.mount('#app')

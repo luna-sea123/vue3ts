@@ -44,3 +44,5 @@ npm run build
 ```sh
 npm run lint
 ```
+npm i --save-dev @types/node
+npm install dayjs --save

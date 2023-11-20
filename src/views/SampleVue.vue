@@ -31,7 +31,6 @@ import { onMounted, ref, watch } from 'vue'
 
 import SampleCollection from '@/components/Sample/SampleCollection.vue'
 import SampleForm from '@/components/Sample/SampleForm.vue'
-import InputText from 'primevue/inputtext'
 
 const test = ref<string>('')
 const samples = ref<{ id: number; test: string }[]>([
@@ -54,10 +53,10 @@ const deleteSample = (id: number) => {
   }
 }
 
-type schedules = { id: number; title: string; task: string; address: string }
+type schedules = { id: number; title: string; task: string; address: string; start: Date | null; end: Date | null }
 const datas = ref<schedules[]>([
-  { id: 1, title: 'title1', task: 'task1', address: 'TOKYO' },
-  { id: 2, title: 'title2', task: 'task2', address: 'TOKYO' }
+  { id: 1, title: 'title1', task: 'task1', address: 'TOKYO', start: new Date('2023-11-10T10:30:00'), end: new Date('2023-11-11T20:30:00') },
+  { id: 2, title: 'title2', task: 'task2', address: 'TOKYO', start: new Date('2023-11-19T10:30:00'), end: new Date('2023-11-22T20:30:00') },
 ])
 
 const resistNewTask = (newSchedule: schedules) => {

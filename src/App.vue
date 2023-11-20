@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import{inject} from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import Nav from '@/components/Nav.vue'
+
 </script>
 
 <template>
